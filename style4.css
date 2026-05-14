@@ -1,0 +1,47 @@
+.cookies, form, .container{
+   
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+}
+.container{
+    
+    margin: 30px auto;
+    width: 70wv;
+    min-height: 50vw;
+}
+
+.container div{
+    background-color: #ebd9b8;
+    margin: 10px;
+    padding: 10px;
+    text-align: justify;
+}
+
+.cookies{
+    background-color: rgb(192, 37, 37);
+    color: aliceblue;
+    width: 90vw;
+    padding: 5px 0;
+    border-radius: 20px;
+    bottom: 30px;
+    position: fixed;
+    opacity: .9;
+    left: 5vw;
+}
+.cookies .btn{
+    background-color: rgb(255, 240, 236);
+    color: rgb(155, 18, 18);
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+
+}
+.cookies .btn:hover{
+    cursor: pointer;
+}
