@@ -1,45 +1,486 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style4.css">
-    <title>Document</title>
+    <title>Ratujmy Orangutany</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root{
+    --primary-color: #da8345;
+    --secondary-color: #d4d2cf;
+    --background-color: #000000;
+    --text-color: #ffffff;}
+        body{
+    background-image: url("https://images.pexels.com/photos/27809168/pexels-photo-27809168.jpeg");
+    background-size: cover;
+    background-position: center 30px;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Georgia', Times New Roman, Times, serif;
+    margin: 0;
+    padding: 0px;
+}
+header#top-header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #191b0f;
+    z-index: 1000;
+    transition: 0.4s;
+}
+nav#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+.logo{
+    color:var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.nav-links{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.nav-links.active{
+    display: flex !important;
+}
+.nav-links li{
+    margin-left: 20px;
+}
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+.nav-links a:hover{
+    color: var(--primary-color);
+}
+
+.menu-toggle{
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+#theme-toggle{
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    margin-left: auto;
+    margin-right: 20px;
+}
+#theme-toggle:focus,
+.nav-links a:focus{
+    outline:none;
+    outline-offset: 2px;
+}
+
+
+.wstep{    
+    background-image: linear-gradient(#4e381480, #00000030);
+    padding:  90px;
+    min-height: 50vh;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.8);
+    
+}
+.wstep h1{
+    font-size: 54px;
+    margin-top: 100px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+  
+
+}
+.wstep h2{
+    font-size: 20px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.wstep p{
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.info{
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 60px 0;
+}
+
+.info-inner{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 40px;
+    
+
+}
+.section{
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    
+}
+
+.links{
+    width: 30%;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.links img{
+    margin: 0.5%;
+    width: 90%;
+    transition: 1s ease;
+    border-radius: 10%;
+
+}
+
+.links img:hover {
+    border-radius: 25%;
+}
+
+.links:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.4) contrast(1.2);
+    border-radius: 25%;
+}
+.links-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: 80%;
+    pointer-events: none;
+    text-shadow: 1px 1px 4px black;
+    font-size: 0.9rem;
+}
+.links-overlay.active {
+    opacity: 1;
+}
+.links:hover .links-overlay {
+    opacity: 1;
+}
+.zagrozenia{
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 8% 40px 10px;
+    
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.accordion {
+    background-color: rgba(0,0,0,0.85);
+    padding: 40px;
+}
+
+.acc-item {
+    border-bottom: 1px solid #444;
+    margin-bottom: 5px;
+}
+.acc-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 15px 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    transition: color 0.3s;
+}
+.acc-btn:hover {
+    color: var(--primary-color); 
+}
+
+.acc-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 10px;
+    color: #ccc;
+    line-height: 1.7;
+}
+.acc-content.open {
+    max-height: 300px;
+    padding: 10px 10px 20px;
+}
+.form-wrap {
+    background-color: rgba(0,0,0,0.85);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-wrap h2 { margin-bottom: 20px; }
+.form-wrap label {
+    display: block;
+    margin-bottom: 4px;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+.form-wrap input[type="text"],
+.form-wrap input[type="email"] {
+    width: 280px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    background: #1a1a1a;
+    border: 1px solid #555;
+    color: white;
+    font-size: 1rem;
+    border-radius: 3px;
+}
+#email {
+    margin-bottom: 30px;
+}
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 8px 0 20px;
+    
+}
+.radio-group label { 
+    color: white; 
+    cursor: pointer; 
+    font-size: 1.2rem;
+}
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px 50px;
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+
+}
+.submit-btn:hover {
+    background-color: #c0713a;
+    transform: scale(1.05);
+}
+.thank-you {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+footer {
+    background-color: #191b0f;
+    color: #aaa;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+    .wstep {
+        padding: 40px 20px;
+    }
+    .wstep h1 {
+        font-size: 32px;
+        margin-top: 80px;
+    }
+    .wstep h2 {
+        font-size: 16px;
+    }
+    .wstep p {
+        font-size: 15px;
+        margin: 20px 0;
+    }
+    .section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .links {
+        width: 80%;
+    }
+}
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #191b0f;
+        padding: 10px 0;
+    }
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        padding: 12px 0;
+        border-top: 1px solid #333;
+    }
+}
+</style>
+        
 </head>
 <body>
-    
-    <!-- .cookies>p{Strona wykorzystuje ciasteczka.}+btn(x)^form>input:number#age^.container>Lorem*20 -->
-    <div class="cookies">
-        <p>Strona wykorzystuje ciasteczka.</p>
-        <div class="btn">x</div>
-    </div>
-    <form action="#">
-        <input type="number" name="" id="age"
-        placeholder="Podaj swój wiek">
-    </form>
+    <!-- header#top-header>nav#navbar>(div.logo+span{Orangutany})+div#mobile-menu.menu-toggle>i.fa-solid.fa-bars^^ul.nav-links>li*3>a -->
+    <header id="top-header">
+        <nav id="navbar">
+            <div class="logo">
+            <span>Ratujmy<br>Orangutany!</span></div>
+            <div id="mobile-menu" class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="#wstep">Wstęp</a></li>
+                <li><a href="#info">Zagrożenia</a></li>
+                <li><a href="#zagrozenia">Pomoc</a></li>
+                <li><a href="#kontakt">Donacje</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="wstep" id="wstep">
+         <div class="overlay">
+        <h1>Orangutany</h1>
+        <h2>Ostatnia szansa na ratunek</h2>
+        <p>Orangutany to jedne z najbardziej zagrożonych gatunków małp na świecie. Ich populacja drastycznie spadła w ciągu ostatnich dziesięcioleci, głównie z powodu wylesiania, kłusownictwa i handlu dzikimi zwierzętami. Orangutany są endemiczne dla wysp Borneo i Sumatra, gdzie ich naturalne siedliska są niszczone przez działalność człowieka.</p>
 
-    <div class="container">
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus repellendus soluta voluptate nesciunt suscipit similique numquam esse magni perspiciatis debitis neque facilis ut, ipsum architecto eum, praesentium quaerat, sapiente perferendis.</div>
-        <div>Accusamus fugiat sequi perspiciatis quidem obcaecati optio, quos a consectetur, quaerat maiores incidunt, ab voluptates delectus. Molestias similique modi qui nemo debitis quo temporibus aliquam! Aliquid aliquam nisi recusandae enim.</div>
-        <div>Repellendus aspernatur libero non alias voluptates necessitatibus doloribus tenetur accusamus doloremque odit, vel quaerat facere. Facilis obcaecati, dolorem neque harum debitis aliquid. Maxime odio ipsam reprehenderit veritatis quasi a fuga.</div>
-        <div>Fugit delectus distinctio animi laudantium harum sequi repudiandae dolorum ipsum eius ducimus non voluptates, laborum assumenda optio beatae aliquid similique error voluptate quod labore nulla consequuntur quia! Eum, facere optio.</div>
-        <div>Facilis modi mollitia, officiis explicabo eveniet voluptatum aliquam. Explicabo perferendis mollitia nam dicta excepturi odio! Veniam magnam ea earum ullam et id eveniet perspiciatis, voluptatibus accusamus consequuntur quos fugit eos.</div>
-        <div>Architecto totam optio mollitia porro dolor? Repudiandae laborum perspiciatis totam cupiditate provident fuga corrupti, molestias quo odit assumenda, aliquam fugiat necessitatibus minus deserunt quibusdam, incidunt debitis id. Quas, voluptatum ullam?</div>
-        <div>Harum vel quo placeat ad, fugiat sint distinctio quibusdam odit accusantium temporibus cupiditate nostrum provident expedita mollitia tempora eum totam quae enim libero quas! Voluptatem repellat illum nihil laudantium qui.</div>
-        <div>Unde quisquam laborum qui placeat ratione! Odio dolore dolores odit, laborum porro velit tempore, autem labore qui rem natus totam voluptates ad, voluptate sequi alias illo nesciunt minus corporis suscipit?</div>
-        <div>Incidunt voluptate cum nihil dignissimos velit quibusdam voluptas error quam minima iusto, cumque doloremque animi dolorum aliquam eos dicta dolorem veritatis quidem, iure earum porro fugiat provident asperiores. Rem, dolore!</div>
-        <div>Labore explicabo beatae modi possimus sunt saepe eius, reprehenderit, qui necessitatibus hic delectus corrupti assumenda non! Dolor quidem odio dolores voluptas eligendi harum animi id. Quaerat ipsa error maxime veritatis?</div>
-        <div>Temporibus ab, recusandae aspernatur sed ipsa illo accusantium tenetur aliquid, eum quod ullam eligendi provident non animi magnam quis velit quibusdam consequatur. Nostrum laudantium odio voluptates voluptate magnam excepturi dignissimos!</div>
-        <div>Voluptatem at suscipit illo dolor, fugit, iure reprehenderit hic pariatur, quis dolore ratione autem iste maiores et. Ipsum ab earum, itaque aspernatur culpa autem totam. Dolor quasi natus maxime nostrum.</div>
-        <div>Possimus molestias eligendi laudantium blanditiis porro facilis sapiente consequatur tempore, earum nesciunt officia quos inventore repudiandae voluptates quod natus, rerum animi cum ea aspernatur doloremque ducimus dolore enim vel. Quae?</div>
-        <div>In nesciunt harum ratione fugit perspiciatis velit exercitationem! Neque tenetur voluptas quisquam dicta reiciendis possimus corrupti odio optio ipsam! Quaerat, beatae eligendi. Eos ipsam sapiente, non architecto molestiae magnam maiores.</div>
-        <div>Tempora ex, at atque aut hic cum in voluptates officiis placeat, laudantium a debitis, quasi vel incidunt voluptatum nihil itaque dolore deleniti. Nesciunt minima, maxime suscipit molestiae aspernatur recusandae odit.</div>
-        <div>Nulla cum incidunt repellendus ad ipsam odio laborum magnam eligendi officiis quod quisquam fugit illo libero laudantium natus ea eveniet dolor, explicabo sunt facere quia et atque molestiae assumenda! Asperiores!</div>
-        <div>Dolor et voluptatum veritatis facere nostrum. Repellendus expedita, autem excepturi error corrupti neque debitis officia amet, rem perferendis commodi eum unde deleniti voluptates nobis itaque sed, facere maiores molestiae aspernatur!</div>
-        <div>Cumque sit dignissimos nam distinctio adipisci nihil, saepe consequatur corrupti voluptatibus numquam omnis dolorum ut asperiores. Deserunt temporibus quasi ab. Minima necessitatibus libero aliquid fuga blanditiis est id nobis accusantium.</div>
-        <div>Minima, dolores natus? Minima odio minus voluptas. Expedita dolorem pariatur ex possimus adipisci laudantium officiis ipsum nostrum sit quis suscipit dolore eum, nesciunt quasi eligendi laborum magnam? Nam, porro aspernatur!</div>
-        <div>Voluptas, voluptate deserunt aperiam molestias et rerum inventore dolor dignissimos recusandae molestiae perferendis reprehenderit eius suscipit dolores modi sapiente vel eaque voluptatem quas animi similique? Recusandae debitis dicta ipsum in.</div>
     </div>
-    <script src="./zajecia11.js"></script>
+    </section>
+
+    <section class="info" id="info">
+        <div class="info-inner">
+            <h2>Dlaczego orangutany są zagrożone?</h2>
+            <p>Orangutany są zagrożone głównie z powodu utraty siedlisk. Wylesianie, spowodowane przez przemysł palmowy, wydobycie ropy naftowej i nielegalne wycinanie lasów, niszczy ich naturalne środowisko. Dodatkowo, kłusownictwo i handel dzikimi zwierzętami stanowią poważne zagrożenie dla ich przetrwania.</p>
+        </div>
+    </section>
+
+     <section class="section" id="section">
+        <div class="links">
+            <img src="https://images.pexels.com/photos/11781946/pexels-photo-11781946.jpeg" alt="Orangutan">
+            <div class="links-overlay"><strong>Wylesianie</strong><p>Co roku miliony hektarów lasów tropikalnych są wycinane pod plantacje palmy olejowej.</p></div>
+        </div>
+        <div class="links">
+            <img src="https://images.pexels.com/photos/6447551/pexels-photo-6447551.jpeg" alt="Orangutan">
+            <div class="links-overlay"><strong>Kłusownictwo</strong><p>Orangutany są zabijane lub sprzedawane jako zwierzęta domowe na czarnym rynku.</p></div>
+        </div>
+        <div class="links">
+            <img src="https://images.pexels.com/photos/33686806/pexels-photo-33686806.jpeg" alt="Orangutan">
+            <div class="links-overlay"><strong>Zmiany klimatu</strong><p>Ekstremalne susze i pożary lasów coraz częściej niszczą siedliska orangutanów.</p></div>
+        </div>
+    </section>
+
+    <section class="zagrozenia" id="zagrozenia">
+        <div class="">
+            <h2>Jak możemy pomóc?</h2>
+            <p>Istnieje wiele sposobów, w jakie możemy pomóc orangutanom. Wspieranie organizacji zajmujących się ochroną środowiska, unikanie produktów pochodzących z wylesiania oraz edukowanie innych na temat zagrożeń dla tych wspaniałych zwierząt to tylko niektóre z nich. Każda osoba może przyczynić się do ochrony orangutanów i ich siedlisk.</p>
+        </div>
+    </section>
+    
+<section class="accordion">
+   
+    <div class="acc-item">
+        <button class="acc-btn">Unikaj oleju palmowego</button>
+        <div class="acc-content">Sprawdzaj skład produktów codziennego użytku — olej palmowy kryje się w żywności, kosmetykach i detergentach. Wybieraj produkty z certyfikatem RSPO lub bez oleju palmowego.</div>
+    </div>
+    <div class="acc-item">
+        <button class="acc-btn">Wspieraj organizacje ochrony przyrody</button>
+        <div class="acc-content">Organizacje takie jak WWF, Orangutan Foundation czy Borneo Orangutan Survival prowadzą programy ratunkowe i odbudowę siedlisk. Nawet małe wsparcie finansowe ma realny wpływ.</div>
+    </div>
+    <div class="acc-item">
+        <button class="acc-btn">Edukuj innych</button>
+        <div class="acc-content">Rozmawiaj z rodziną i znajomymi, udostępniaj rzetelne artykuły w mediach społecznościowych. Świadomość społeczna to pierwszy krok do zmiany.</div>
+    </div>
+    <div class="acc-item">
+        <button class="acc-btn">Adoptuj orangutana symbolicznie</button>
+        <div class="acc-content">Wiele organizacji oferuje symboliczną adopcję — otrzymujesz certyfikat i regularne aktualizacje o wybranym zwierzęciu, a Twoje pieniądze trafiają bezpośrednio na jego opiekę.</div>
+    </div>
+</section>
+
+
+<section class="form-wrap" id="kontakt">
+    <h2>Też chcesz pomóc orangutanom?</h2>
+    <div id="form-fields">
+        <label for="txt">Imię</label>
+        <input type="text" id="txt" placeholder="np. Anna">
+        <label for="txt1">Nazwisko</label>
+        <input type="text" id="txt1" placeholder="np. Żurek">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="np. annazurek@pomaga.com">
+    <label style="text-align: center; display: block;">Kwota</label>        <div class="radio-group">
+            <label><input type="radio" name="r" id="r1"> 1$</label>
+            <label><input type="radio" name="r" id="r2"> 5$</label>
+            <label><input type="radio" name="r" id="r3"> 10$</label>
+        </div>
+        <button class="submit-btn" onclick="submitForm()">Wpłać</button>
+    </div>
+    <div class="thank-you" id="thank-you">
+         Dziękujemy za Twoją pomoc!<br>
+        <span style="font-size:1rem; color:#ccc;">Razem możemy ocalić orangutany.</span>
+    </div>
+</section>
+<footer>
+    <p> <strong style="color: var(--primary-color)">Ratujmy Orangutany!</strong></p>
+    <p> 2026 &copy; Emilia Waśniowska</p>
+</footer>
+
+<script>
+document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('open');
+        btn.nextElementSibling.classList.toggle('open');
+    });
+});
+
+function submitForm() {
+    document.getElementById('form-fields').style.display = 'none';
+    document.getElementById('thank-you').style.display = 'block';
+}
+
+document.querySelectorAll('.links').forEach(link => {
+    link.addEventListener('click', () => {
+        link.querySelector('.links-overlay').classList.toggle('active');
+    });
+});
+
+document.getElementById('mobile-menu').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+</script>
+
 </body>
 </html>
